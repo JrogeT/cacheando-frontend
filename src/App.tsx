@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route, Outlet, Navigate} from "react-router-dom";
+import Login from "./components/login.tsx";
+import NotFound from "./components/not-found.tsx";
+import Home from "./components/Home.tsx";
+import Layout from "./components/Layout.tsx";
+import Lobby from "./components/lobby.tsx";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+          <Route
+              path="/"
+              element={<Navigate to="/login" replace />}
+          />
+        <Route path="login" element={<Login />} />
+        <Route path="room/:id" element={<Lobby />}/>
+      </Routes>
     </div>
   );
 }
